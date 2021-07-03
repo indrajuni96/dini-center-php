@@ -35,6 +35,8 @@ if (isset($_SESSION['message'])) {
               <th style="width:6%">No</th>
               <th>Kode</th>
               <th>Nama Gejala</th>
+              <th>Batas Bawah</th>
+              <th>Batas Atas</th>
               <th style="width:15%">Action</th>
             </tr>
           </thead>
@@ -50,8 +52,10 @@ if (isset($_SESSION['message'])) {
                   <td><?= $no; ?></td>
                   <td><?= $value['kode']; ?></td>
                   <td><?= $value['namaGejala']; ?></td>
+                  <td><?= $value['batasBawah']; ?></td>
+                  <td><?= $value['batasAtas']; ?></td>
                   <td>
-                    <a href="index.php?act=edit-gejala&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaGejala=<?= $value['namaGejala']; ?>" class="btn btn-success">Edit</a>
+                    <a href="index.php?act=edit-gejala&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaGejala=<?= $value['namaGejala']; ?>&batasBawah=<?= $value['batasBawah']; ?>&batasAtas=<?= $value['batasAtas']; ?>" class="btn btn-success">Edit</a>
                     <a href="index.php?act=delete-gejala&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
                   </td>
                 </tr>

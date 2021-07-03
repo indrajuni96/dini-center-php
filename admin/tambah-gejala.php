@@ -4,6 +4,8 @@ if (isset($_POST['submit'])) {
   $uniqID = uniqid();
   $kode        = strtoupper($_POST['kode']);
   $namaGejala        = $_POST['namaGejala'];
+  $batasBawah        = $_POST['batasBawah'];
+  $batasAtas        = $_POST['batasAtas'];
 
   $gejala = array();
   $checkGejala = $database->getReference("gejala")->getValue();
@@ -19,7 +21,9 @@ if (isset($_POST['submit'])) {
   } else {
     $result = $database->getReference("gejala/{$uniqID}")->set([
       'kode' => $kode,
-      'namaGejala' => $namaGejala
+      'namaGejala' => $namaGejala,
+      'batasBawah' => $batasBawah,
+      'batasAtas' => $batasAtas
     ]);
 
     $_SESSION['message']  = "Data Berhasil Di Tambah";
@@ -65,6 +69,20 @@ if (isset($_POST['submit'])) {
             <label for="namaGejala" class="col-sm-2 control-label">Nama Gejala</label>
             <div class="col-sm-8">
               <input type="text" name="namaGejala" class="form-control" id="namaGejala" placeholder="Nama Gejala" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasBawah" class="col-sm-2 control-label">Batas Bawah</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasBawah" class="form-control" id="batasBawah" min="1" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasAtas" class="col-sm-2 control-label">Batas Atas</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasAtas" class="form-control" id="batasAtas" min="1" max="100" required>
             </div>
           </div>
 

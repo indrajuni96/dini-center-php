@@ -3,8 +3,9 @@ if (isset($_POST['submit'])) {
 
   $uniqID = uniqid();
   $idPenyakit        = $_POST['idPenyakit'];
-  $idGejala        = $_POST['idGejala'];
-  $kode = $idPenyakit . '' . $idGejala;
+  $idGejala1        = $_POST['idGejala1'];
+  $idGejala2        = $_POST['idGejala2'];
+  $kode = $idPenyakit . '' . $idGejala1;
 
   $pengetahuan = array();
   $checkPengetahuan = $database->getReference("pengetahuan")->getValue();
@@ -21,7 +22,8 @@ if (isset($_POST['submit'])) {
     $result = $database->getReference("pengetahuan/{$uniqID}")->set([
       'kode' => $kode,
       'idPenyakit' => $idPenyakit,
-      'idGejala' => $idGejala
+      'idGejala1' => $idGejala1,
+      'idGejala2' => $idGejala2
     ]);
 
     $_SESSION['message']  = "Data Berhasil Di Tambah";
@@ -77,9 +79,29 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-group">
-            <label for="idGejala" class="col-sm-2 control-label">Gejala</label>
+            <label for="idGejala1" class="col-sm-2 control-label">Gejala 1</label>
             <div class="col-sm-8">
-              <select name="idGejala" id="idGejala" class="form-control" required>
+              <select name="idGejala1" id="idGejala1" class="form-control" required>
+                <option>--pilih--</option>
+                <?php
+                $data = $database->getReference('gejala')->getValue();
+
+                if (!empty($data)) :
+                  foreach ($data as $key => $value) :
+                ?>
+                    <option value="<?= $key ?>"><?= $value['namaGejala'] ?></option>
+                <?php
+                  endforeach;
+                endif;
+                ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="idGejala2" class="col-sm-2 control-label">Gejala 2</label>
+            <div class="col-sm-8">
+              <select name="idGejala2" id="idGejala2" class="form-control" required>
                 <option>--pilih--</option>
                 <?php
                 $data = $database->getReference('gejala')->getValue();

@@ -40,6 +40,12 @@ if (isset($_GET['act'])) {
     '0' => 'home'
   );
 
+  $data_game = array(
+    '0' => 'data-game',
+    '1' => 'tambah-game',
+    '2' => 'edit-game'
+  );
+
   $data_gejala = array(
     '0' => 'data-gejala',
     '1' => 'tambah-gejala',
@@ -66,6 +72,16 @@ if (isset($_GET['act'])) {
       $status_home = '';
     }
   }
+
+  foreach ($data_game as $get_data_game) {
+    if ($get_data_game == $_GET['act']) {
+      $status_data_game = "active";
+      break;
+    } else {
+      $status_data_game = '';
+    }
+  }
+
 
   foreach ($data_gejala as $get_data_gejala) {
     if ($get_data_gejala == $_GET['act']) {
@@ -151,6 +167,7 @@ if (isset($_GET['act'])) {
                        <?= $status_home; ?>"><a href="index.php?act=home"><i class="fa fa-home"></i>
               <span>Home</span></a></li>
 
+          <!-- <li class="<?= $status_data_game; ?>"><a href="index.php?act=data-game"><i class="fa fa-pencil-square-o"></i> <span>Data Game</span></a></li> -->
           <li class="<?= $status_data_gejala; ?>"><a href="index.php?act=data-gejala"><i class="fa fa-pencil-square-o"></i> <span>Data Gejala</span></a></li>
           <li class="<?= $status_data_penyakit; ?>"><a href="index.php?act=data-penyakit"><i class="fa fa-pencil-square-o"></i> <span>Data Penyakit</span></a></li>
           <li class="<?= $status_data_pengetahuan; ?>"><a href="index.php?act=data-pengetahuan"><i class="fa fa-pencil-square-o"></i> <span>Data Pengetahuan</span></a></li>

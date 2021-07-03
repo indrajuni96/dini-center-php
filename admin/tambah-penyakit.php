@@ -5,6 +5,8 @@ if (isset($_POST['submit'])) {
   $kode        = strtoupper($_POST['kode']);
   $namaPenyakit        = $_POST['namaPenyakit'];
   $penanganan        = $_POST['penanganan'];
+  $batasBawah        = $_POST['batasBawah'];
+  $batasAtas        = $_POST['batasAtas'];
 
   $gejala = array();
   $checkGejala = $database->getReference("penyakit")->getValue();
@@ -21,7 +23,9 @@ if (isset($_POST['submit'])) {
     $result = $database->getReference("penyakit/{$uniqID}")->set([
       'kode' => $kode,
       'namaPenyakit' => $namaPenyakit,
-      'penanganan' => $penanganan
+      'penanganan' => $penanganan,
+      'batasBawah' => $batasBawah,
+      'batasAtas' => $batasAtas
     ]);
 
     $_SESSION['message']  = "Data Berhasil Di Tambah";
@@ -68,9 +72,23 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-group">
+            <label for="batasBawah" class="col-sm-2 control-label">Batas Bawah</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasBawah" class="form-control" id="batasBawah" min="1" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasAtas" class="col-sm-2 control-label">Batas Atas</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasAtas" class="form-control" id="batasAtas" min="1" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="penanganan" class="col-sm-2 control-label">Penanganan</label>
             <div class="col-sm-8">
-              <input type="text" name="penanganan" class="form-control" id="penanganan" placeholder="Penanganan">
+              <textarea class="form-control" name="penanganan" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
           </div>
 

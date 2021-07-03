@@ -14,7 +14,7 @@ if (isset($_SESSION['message'])) {
   <section class="content-header">
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Menu</a></li>
-      <li class="active">Data Pengetahuan</li>
+      <li class="active">Data Game</li>
     </ol>
   </section>
 
@@ -24,45 +24,34 @@ if (isset($_SESSION['message'])) {
     <!-- Default box -->
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">Data Table Pengetahuan</h3>
+        <h3 class="box-title">Data Table Game</h3>
       </div>
       <div class="box-body table-responsive">
-        <a href="index.php?act=tambah-pengetahuan" class="btn btn-lg btn-success fa fa-plus" style="margin-bottom:30px; margin-top:10px;"> Tambah</a>
+        <a href="index.php?act=tambah-game" class="btn btn-lg btn-success fa fa-plus" style="margin-bottom:30px; margin-top:10px;"> Tambah</a>
 
         <table id="tableData" class="table table-bordered table-striped">
           <thead>
             <tr>
               <th style="width:6%">No</th>
-              <th>Gejala 1</th>
-              <th></th>
-              <th>Gejala 2</th>
-              <th></th>
-              <th>Penyakit</th>
-              <!-- <th style="width:15%">Action</th> -->
+              <th>Nama Game</th>
+              <th style="width:15%">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php
             $no = 1;
-
-            $data = $database->getReference("pengetahuan")->getValue();
-            $dataGejala = $database->getReference("gejala")->getValue();
-            $dataPenyakit = $database->getReference("penyakit")->getValue();
+            $data = $database->getReference("game")->getValue();
 
             if (!empty($data)) :
               foreach ($data as $key => $value) :
             ?>
                 <tr>
                   <td><?= $no; ?></td>
-                  <td><?= $dataGejala[$value['idGejala1']]['namaGejala']; ?></td>
-                  <td>AND</td>
-                  <td><?= $dataGejala[$value['idGejala2']]['namaGejala']; ?></td>
-                  <td>THEN</td>
-                  <td><?= $dataPenyakit[$value['idPenyakit']]['namaPenyakit']; ?></td>
-                  <!-- <td>
-                    <a href="index.php?act=edit-pengetahuan&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&idPenyakit=<?= $value['idPenyakit']; ?>&idGejala=<?= $value['idGejala']; ?>" class="btn btn-success">Edit</a>
-                    <a href="index.php?act=delete-pengetahuan&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
-                  </td> -->
+                  <td><?= $value['namaGame']; ?></td>
+                  <td>
+                    <a href="index.php?act=edit-game&id=<?= $key; ?>&namaGame=<?= $value['namaGame']; ?>" class="btn btn-success">Edit</a>
+                    <a href="index.php?act=delete-game&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
+                  </td>
                 </tr>
             <?php
                 $no++;

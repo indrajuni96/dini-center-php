@@ -2,10 +2,14 @@
 $id = $_GET['id'];
 $getKode = strtoupper($_GET['kode']);
 $namaGejala = $_GET['namaGejala'];
+$batasBawah = $_GET['batasBawah'];
+$batasAtas = $_GET['batasAtas'];
 
 if (isset($_POST['submit'])) {
   $kode = strtoupper($_POST['kode']);
   $namaGejala = $_POST['namaGejala'];
+  $batasBawah        = $_POST['batasBawah'];
+  $batasAtas        = $_POST['batasAtas'];
 
   $gejala = array();
   $checkGejala = $database->getReference("gejala")->getValue();
@@ -21,7 +25,9 @@ if (isset($_POST['submit'])) {
   } else {
     $postData = [
       'kode' => $kode,
-      'namaGejala' => $namaGejala
+      'namaGejala' => $namaGejala,
+      'batasBawah' =>  $batasBawah,
+      'batasAtas' => $batasAtas
     ];
 
     $updates = [
@@ -69,6 +75,20 @@ if (isset($_POST['submit'])) {
             <label for="namaGejala" class="col-sm-2 control-label">Nama Gejala</label>
             <div class="col-sm-8">
               <input type="text" name="namaGejala" class="form-control" id="namaGejala" placeholder="Nama Gejala" required value="<?= $namaGejala; ?>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasBawah" class="col-sm-2 control-label">Batas Bawah</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasBawah" class="form-control" id="batasBawah" min="1" max="100" required value="<?= $batasBawah; ?>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasAtas" class="col-sm-2 control-label">Batas Atas</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasAtas" class="form-control" id="batasAtas" min="1" max="100" required value="<?= $batasAtas; ?>">
             </div>
           </div>
 
