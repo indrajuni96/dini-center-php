@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
   $idPenyakit        = $_POST['idPenyakit'];
   $idGejala1        = $_POST['idGejala1'];
   $idGejala2        = $_POST['idGejala2'];
-  $kode = $idPenyakit . '' . $idGejala1;
+  $kode = $idGejala1 . '-' . $idGejala2 . '-' . $idPenyakit;
 
   $pengetahuan = array();
   $checkPengetahuan = $database->getReference("pengetahuan")->getValue();
@@ -18,6 +18,8 @@ if (isset($_POST['submit'])) {
 
   if (array_search($kode, $pengetahuan)) {
     echo "<script>Swal.fire('Pengetahuan sudah digunakan','','error'); </script>";
+  } elseif ($idGejala1 == $idGejala2) {
+    echo "<script>Swal.fire('Gejala 1 dan Gejala 2 tidak boleh sama','','error'); </script>";
   } else {
     $result = $database->getReference("pengetahuan/{$uniqID}")->set([
       'kode' => $kode,
@@ -37,9 +39,6 @@ if (isset($_POST['submit'])) {
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <!-- <h1>
-          Tambah Data
-        </h1> -->
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Menu</a></li>
       <li>Data Pengetahuan</li>
@@ -58,26 +57,6 @@ if (isset($_POST['submit'])) {
       <div class="box-body" style="min-height:400px;margin-top:20px;">
 
         <form class="form-horizontal" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
-          <div class="form-group">
-            <label for="idPenyakit" class="col-sm-2 control-label">Penyakit</label>
-            <div class="col-sm-8">
-              <select name="idPenyakit" id="idPenyakit" class="form-control" required>
-                <option>--pilih--</option>
-                <?php
-                $data = $database->getReference('penyakit')->getValue();
-
-                if (!empty($data)) :
-                  foreach ($data as $key => $value) :
-                ?>
-                    <option value="<?= $key ?>"><?= $value['namaPenyakit'] ?></option>
-                <?php
-                  endforeach;
-                endif;
-                ?>
-              </select>
-            </div>
-          </div>
-
           <div class="form-group">
             <label for="idGejala1" class="col-sm-2 control-label">Gejala 1</label>
             <div class="col-sm-8">
@@ -110,6 +89,26 @@ if (isset($_POST['submit'])) {
                   foreach ($data as $key => $value) :
                 ?>
                     <option value="<?= $key ?>"><?= $value['namaGejala'] ?></option>
+                <?php
+                  endforeach;
+                endif;
+                ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="idPenyakit" class="col-sm-2 control-label">Penyakit</label>
+            <div class="col-sm-8">
+              <select name="idPenyakit" id="idPenyakit" class="form-control" required>
+                <option>--pilih--</option>
+                <?php
+                $data = $database->getReference('penyakit')->getValue();
+
+                if (!empty($data)) :
+                  foreach ($data as $key => $value) :
+                ?>
+                    <option value="<?= $key ?>"><?= $value['namaPenyakit'] ?></option>
                 <?php
                   endforeach;
                 endif;

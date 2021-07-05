@@ -35,6 +35,8 @@ if (isset($_SESSION['message'])) {
               <th style="width:6%">No</th>
               <th>Kode</th>
               <th>Nama Penyakit</th>
+              <th>Batas Bawah</th>
+              <th>Batas Atas</th>
               <th>Penanganan</th>
               <th style="width:15%">Action</th>
             </tr>
@@ -51,9 +53,11 @@ if (isset($_SESSION['message'])) {
                   <td><?= $no; ?></td>
                   <td><?= $value['kode']; ?></td>
                   <td><?= $value['namaPenyakit']; ?></td>
+                  <td><?= $value['batasBawah']; ?></td>
+                  <td><?= $value['batasAtas']; ?></td>
                   <td><?= $value['penanganan'] ?></td>
                   <td>
-                    <a href="index.php?act=edit-penyakit&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaPenyakit=<?= $value['namaPenyakit']; ?>&penanganan=<?= $value['penanganan']; ?>" class="btn btn-success">Edit</a>
+                    <a href="index.php?act=edit-penyakit&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaPenyakit=<?= $value['namaPenyakit']; ?>&batasBawah=<?= $value['batasBawah']; ?>&batasAtas=<?= $value['batasAtas']; ?>&penanganan=<?= $value['penanganan']; ?>" class="btn btn-success">Edit</a>
                     <a href="index.php?act=delete-penyakit&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
                   </td>
                 </tr>

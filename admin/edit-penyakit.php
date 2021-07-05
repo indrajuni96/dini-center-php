@@ -2,11 +2,15 @@
 $id = $_GET['id'];
 $getKode = strtoupper($_GET['kode']);
 $namaPenyakit = $_GET['namaPenyakit'];
+$batasBawah = $_GET['batasBawah'];
+$batasAtas = $_GET['batasAtas'];
 $penanganan = $_GET['penanganan'];
 
 if (isset($_POST['submit'])) {
   $kode = strtoupper($_POST['kode']);
   $namaPenyakit = $_POST['namaPenyakit'];
+  $batasBawah        = $_POST['batasBawah'];
+  $batasAtas        = $_POST['batasAtas'];
   $penanganan = $_POST['penanganan'];
 
   $penyakit = array();
@@ -24,6 +28,8 @@ if (isset($_POST['submit'])) {
     $postData = [
       'kode' => $kode,
       'namaPenyakit' => $namaPenyakit,
+      'batasBawah' =>  $batasBawah,
+      'batasAtas' => $batasAtas,
       'penanganan' => $penanganan
     ];
 
@@ -72,6 +78,20 @@ if (isset($_POST['submit'])) {
             <label for="namaPenyakit" class="col-sm-2 control-label">Nama Penyakit</label>
             <div class="col-sm-8">
               <input type="text" name="namaPenyakit" class="form-control" id="namaPenyakit" placeholder="Nama Penyakit" required value="<?= $namaPenyakit; ?>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasBawah" class="col-sm-2 control-label">Batas Bawah</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasBawah" class="form-control" id="batasBawah" min="1" max="100" required value="<?= $batasBawah; ?>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="batasAtas" class="col-sm-2 control-label">Batas Atas</label>
+            <div class="col-sm-8">
+              <input type="number" name="batasAtas" class="form-control" id="batasAtas" min="1" max="100" required value="<?= $batasAtas; ?>">
             </div>
           </div>
 

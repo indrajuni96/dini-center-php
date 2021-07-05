@@ -34,11 +34,11 @@ if (isset($_SESSION['message'])) {
             <tr>
               <th style="width:6%">No</th>
               <th>Gejala 1</th>
-              <th></th>
+              <!-- <th></th> -->
               <th>Gejala 2</th>
-              <th></th>
+              <!-- <th></th> -->
               <th>Penyakit</th>
-              <!-- <th style="width:15%">Action</th> -->
+              <th style="width:15%">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -55,14 +55,14 @@ if (isset($_SESSION['message'])) {
                 <tr>
                   <td><?= $no; ?></td>
                   <td><?= $dataGejala[$value['idGejala1']]['namaGejala']; ?></td>
-                  <td>AND</td>
+                  <!-- <td>AND</td> -->
                   <td><?= $dataGejala[$value['idGejala2']]['namaGejala']; ?></td>
-                  <td>THEN</td>
+                  <!-- <td>THEN</td> -->
                   <td><?= $dataPenyakit[$value['idPenyakit']]['namaPenyakit']; ?></td>
-                  <!-- <td>
-                    <a href="index.php?act=edit-pengetahuan&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&idPenyakit=<?= $value['idPenyakit']; ?>&idGejala=<?= $value['idGejala']; ?>" class="btn btn-success">Edit</a>
+                  <td>
+                    <a href="index.php?act=edit-pengetahuan&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&idPenyakit=<?= $value['idPenyakit']; ?>&idGejala1=<?= $value['idGejala1']; ?>&idGejala2=<?= $value['idGejala2']; ?>" class="btn btn-success">Edit</a>
                     <a href="index.php?act=delete-pengetahuan&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
-                  </td> -->
+                  </td>
                 </tr>
             <?php
                 $no++;
