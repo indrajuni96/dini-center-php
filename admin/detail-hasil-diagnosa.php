@@ -118,8 +118,6 @@
               <tbody>
                 <?php
                 $no = 1;
-                $dataUsers = $database->getReference("users")->getValue();
-                $dataHasilDiagnosa = $database->getReference("hasilDiagnosa")->getValue();
 
                 if (!empty($dataHasilDiagnosa[$key]['diagnosa'])) :
                   foreach ($dataHasilDiagnosa[$key]['diagnosa'] as $keyDiagnosa => $valueDiagnosa) :
