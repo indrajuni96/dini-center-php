@@ -2,6 +2,7 @@
     $totalGejala = $database->getReference('gejala')->getSnapshot()->numChildren();
     $totalPenyakit = $database->getReference('penyakit')->getSnapshot()->numChildren();
     $totalUser = $database->getReference('users')->getSnapshot()->numChildren();
+    $totalHasilDiagnosa = $database->getReference('hasilDiagnosa')->getSnapshot()->numChildren();
     ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -37,6 +38,7 @@
             </div>
           </div>
           <!-- ./col -->
+
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
@@ -52,6 +54,7 @@
             </div>
           </div>
           <!-- ./col -->
+
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
@@ -62,6 +65,22 @@
               </div>
               <div class="icon">
                 <i class="ion ion-ios-person"></i>
+              </div>
+
+            </div>
+          </div>
+          <!-- ./col -->
+
+          <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+              <div class="inner">
+                <h3><?= $totalHasilDiagnosa ?></h3>
+
+                <p>Data Hasil Diagnosa</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-ios-book"></i>
               </div>
 
             </div>
