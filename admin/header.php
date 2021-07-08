@@ -64,6 +64,10 @@ if (isset($_GET['act'])) {
     '2' => 'edit-pengetahuan'
   );
 
+  $data_rule = array(
+    '0' => 'data-rule'
+  );
+
   $data_user = array(
     '0' => 'data-user',
     '1' => 'tambah-user',
@@ -118,6 +122,15 @@ if (isset($_GET['act'])) {
       break;
     } else {
       $status_data_pengetahuan = '';
+    }
+  }
+
+  foreach ($data_rule as $get_data_rule) {
+    if ($get_data_rule == $_GET['act']) {
+      $status_data_rule = "active";
+      break;
+    } else {
+      $status_data_rule = '';
     }
   }
 
@@ -201,6 +214,7 @@ if (isset($_GET['act'])) {
           <li class="<?= $status_data_gejala; ?>"><a href="index.php?act=data-gejala"><i class="fa fa-pencil-square-o"></i> <span>Data Gejala</span></a></li>
           <li class="<?= $status_data_penyakit; ?>"><a href="index.php?act=data-penyakit"><i class="fa fa-pencil-square-o"></i> <span>Data Penyakit</span></a></li>
           <li class="<?= $status_data_pengetahuan; ?>"><a href="index.php?act=data-pengetahuan"><i class="fa fa-pencil-square-o"></i> <span>Data Pengetahuan</span></a></li>
+          <li class="<?= $status_data_rule; ?>"><a href="index.php?act=data-rule"><i class="fa fa-pencil-square-o"></i> <span>Data Rule</span></a></li>
           <li class="<?= $status_data_hasil_diagnosa; ?>"><a href="index.php?act=data-hasil-diagnosa"><i class="fa fa-pencil-square-o"></i> <span>Data Hasil Diagnosa</span></a></li>
           <li class="<?= $status_keluar; ?>"><a href="../logout.php"><i class="fa fa-sign-out"></i> <span>Keluar</span></a></li>
         </ul>
