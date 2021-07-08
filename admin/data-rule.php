@@ -56,39 +56,7 @@ if (isset($_SESSION['message'])) {
               }
             }
 
-            // print_r($fixCheckPenyakit);
-
-
-
-            // foreach ($dataPengetahuan as  $valuePengetahuan1) {
-            //   foreach ($fixCheckPenyakit as $valueFixCheckPenyakit) {
-            //     if ($valuePengetahuan1['idPenyakit'] == $valueFixCheckPenyakit) {
-            //       if (!in_array($valuePengetahuan1['idGejala1'], $fixGejala)) {
-            //         array_push($fixGejala, $valuePengetahuan1['idGejala1']);
-            //       }
-
-            //       if (!in_array($valuePengetahuan1['idGejala2'], $fixGejala)) {
-            //         array_push($fixGejala, $valuePengetahuan1['idGejala2']);
-            //       }
-            //     }
-            //   }
-            // }
-
             foreach ($fixCheckPenyakit as $valueFixCheckPenyakit) :
-              // foreach ($dataPengetahuan as  $valuePengetahuan1) :
-              //   if ($valuePengetahuan1['idPenyakit'] == $valueFixCheckPenyakit) {
-              //     if (!in_array($valuePengetahuan1['idGejala1'], $fixGejala)) {
-              //       array_push($fixGejala, $valuePengetahuan1['idGejala1']);
-              //     }
-
-              //     if (!in_array($valuePengetahuan1['idGejala2'], $fixGejala)) {
-              //       array_push($fixGejala, $valuePengetahuan1['idGejala2']);
-              //     }
-              //   }
-              // endforeach;
-
-
-              // print_r($fixGejala);
             ?>
               <tr>
                 <td><?= $no; ?></td>
@@ -106,15 +74,14 @@ if (isset($_SESSION['message'])) {
                         if (!in_array($valuePengetahuan1['idGejala2'], $fixGejala)) :
                           array_push($fixGejala, $valuePengetahuan1['idGejala2']);
                         endif;
-
-                    ?>
-                        <li><?= $dataGejala[$valuePengetahuan1['idGejala1']]['namaGejala'] ?></li>
-                        <li><?= $dataGejala[$valuePengetahuan1['idGejala2']]['namaGejala'] ?></li>
-                    <?php
                       endif;
                     endforeach;
 
-                    print_r($fixGejala);
+                    foreach ($fixGejala as $valueFixGejala) :
+                    ?>
+                      <li><?= $dataGejala[$valueFixGejala]['namaGejala'] ?></li>
+                    <?php
+                    endforeach;
                     ?>
                   </ul>
                 </td>
