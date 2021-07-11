@@ -22,14 +22,17 @@
             <tr>
               <th style="width:6%">No</th>
               <th>Nama</th>
-              <th>Hasil Tsukamoto</th>
+              <th>Hasil Fuzzy Tsukamoto</th>
+              <th>Hasil Forward Chaining</th>
               <th style="width:15%">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php
             $no = 1;
+
             $dataUsers = $database->getReference("users")->getValue();
+            $dataPenyakit = $database->getReference("penyakit")->getValue();
             $dataHasilDiagnosa = $database->getReference("hasilDiagnosa")->getValue();
 
             if (!empty($dataUsers)) :
@@ -39,7 +42,16 @@
                   <tr>
                     <td><?= $no; ?></td>
                     <td><?= $value['namaAnak']; ?></td>
-                    <td><?= $dataHasilDiagnosa[$key]['nilaiTsukamoto']; ?></td>
+                    <td><?= $dataHasilDiagnosa[$key][1]['nilaiTsukamoto']; ?></td>
+                    <?php
+                    foreach ($dataPenyakit as $keyPenyakit => $valuePenyakit) :
+                      if ($keyPenyakit == $dataHasilDiagnosa[$key][0]['idPenyakit']) :
+                    ?>
+                        <td><?= $valuePenyakit['namaPenyakit'] ?></td>
+                    <?php
+                      endif;
+                    endforeach;
+                    ?>
                     <td>
                       <a href="index.php?act=detail-hasil-diagnosa&id=<?= $key; ?>" class="btn btn-warning"> Detail</a>
                     </td>

@@ -41,32 +41,46 @@
       session_start();
       require __DIR__ . '/firebase/config.php';
 
-      // // cek apakah session id_user dan level sudah ada, apabila ada ke auth.php.
+      // cek apakah session id_user dan level sudah ada, apabila ada ke auth.php.
       if (isset($_SESSION['id_user']) && isset($_SESSION['level'])) {
         echo '<script>window.location="auth.php";</script>';
       }
 
-      // cek apakah username dan password sudah ke isi
-      if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
+      // cek apakah email dan password sudah ke isi
+      if (isset($_POST['email']) && isset($_POST['password'])) {
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
         try {
-          $signInResult = $auth->signInWithEmailAndPassword($username, $password);
+          $isAdmin = false;
+          $dataUsers = $database->getReference("users")->getValue();
+          $signInResult = $auth->signInWithEmailAndPassword($email, $password);
 
-          $_SESSION['id_user'] = $signInResult->firebaseUserId();
-          $_SESSION['level'] = 'admin';
+          foreach ($dataUsers as $key => $value) {
+            if ($value['email'] == $email) {
+              if ($value['level'] == 'admin') {
+                $isAdmin = true;
+              }
+            }
+          }
 
-          echo '<script>window.location="auth.php";</script>';
+          if ($isAdmin) {
+            $_SESSION['id_user'] = $signInResult->firebaseUserId();
+            $_SESSION['level'] = 'admin';
+
+            echo '<script>window.location="auth.php";</script>';
+          } else {
+            echo "<script>Swal.fire('Level bukan admin','','error'); </script>";
+          }
         } catch (Kreait\Firebase\Auth\SignIn\FailedToSignIn $error) {
-          echo "<script>Swal.fire('Username dan Password tidak cocok','','error'); </script>";
+          echo "<script>Swal.fire('Email dan Password tidak cocok','','error'); </script>";
         }
       }
       ?>
 
       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+          <input type="text" class="form-control" name="email" placeholder="email" required autofocus>
         </div>
         <div class="form-group">
           <input type="password" class="form-control" name="password" placeholder="Password" required>

@@ -79,6 +79,10 @@ if (isset($_GET['act'])) {
     '1' => 'detail-hasil-diagnosa'
   );
 
+  $data_info_autis = array(
+    '0' => 'data-info-autis',
+  );
+
   foreach ($home as $get_home) {
     if ($get_home == $_GET['act']) {
       $status_home = "active";
@@ -151,6 +155,15 @@ if (isset($_GET['act'])) {
       $status_data_hasil_diagnosa = '';
     }
   }
+
+  foreach ($data_info_autis as $get_data_info_autis) {
+    if ($get_data_info_autis == $_GET['act']) {
+      $status_data_info_autis = "active";
+      break;
+    } else {
+      $status_data_info_autis = '';
+    }
+  }
 }
 ?>
 
@@ -216,6 +229,8 @@ if (isset($_GET['act'])) {
           <li class="<?= $status_data_pengetahuan; ?>"><a href="index.php?act=data-pengetahuan"><i class="fa fa-pencil-square-o"></i> <span>Data Pengetahuan</span></a></li>
           <li class="<?= $status_data_rule; ?>"><a href="index.php?act=data-rule"><i class="fa fa-pencil-square-o"></i> <span>Data Rule</span></a></li>
           <li class="<?= $status_data_hasil_diagnosa; ?>"><a href="index.php?act=data-hasil-diagnosa"><i class="fa fa-pencil-square-o"></i> <span>Data Hasil Diagnosa</span></a></li>
+          <li><a href="index.php?act=data-penilaian"><i class="fa fa-pencil-square-o"></i> <span>Data Penilaian</span></a></li>
+          <li class="<?= $status_data_info_autis; ?>"><a href="index.php?act=data-info-autis"><i class="fa fa-pencil-square-o"></i> <span>Data Informasi</span></a></li>
           <li class="<?= $status_keluar; ?>"><a href="../logout.php"><i class="fa fa-sign-out"></i> <span>Keluar</span></a></li>
         </ul>
       </section>

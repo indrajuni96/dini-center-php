@@ -16,6 +16,7 @@
   $id = $_GET['id'];
 
   $dataUser = $database->getReference("users")->getValue();
+  $dataPenyakit = $database->getReference("penyakit")->getValue();
   $dataHasilDiagnosa = $database->getReference("hasilDiagnosa")->getValue();
 
   foreach ($dataUser as $key => $value) :
@@ -85,8 +86,24 @@
 
               <div class="col-sm-10">
                 <p class="form-control-static">
-                  <?= $dataHasilDiagnosa[$key]['nilaiTsukamoto']; ?>
+                  <?= $dataHasilDiagnosa[$key][1]['nilaiTsukamoto']; ?>
                 </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="namaGame" class="col-sm-2 control-label">Hasil Forward Chaining</label>
+
+              <div class="col-sm-10">
+                <?php
+                foreach ($dataPenyakit as $keyPenyakit => $valuePenyakit) :
+                  if ($keyPenyakit == $dataHasilDiagnosa[$key][0]['idPenyakit']) :
+                ?>
+                    <p><?= $valuePenyakit['namaPenyakit'] ?></p>
+                <?php
+                  endif;
+                endforeach;
+                ?>
               </div>
             </div>
           </div>
@@ -119,13 +136,13 @@
                 <?php
                 $no = 1;
 
-                if (!empty($dataHasilDiagnosa[$key]['diagnosa'])) :
-                  foreach ($dataHasilDiagnosa[$key]['diagnosa'] as $keyDiagnosa => $valueDiagnosa) :
+                if (!empty($dataHasilDiagnosa[$key][1]['diagnosa'])) :
+                  foreach ($dataHasilDiagnosa[$key][1]['diagnosa'] as $keyDiagnosa => $valueDiagnosa) :
                 ?>
                     <tr>
                       <td><?= $no; ?></td>
                       <td><?= $valueDiagnosa['namaGejala']; ?></td>
-                      <td><?= $valueDiagnosa['nilai']; ?></td>
+                      <td><?= $valueDiagnosa['nilaiInput']; ?></td>
                     </tr>
                 <?php
                     $no++;
