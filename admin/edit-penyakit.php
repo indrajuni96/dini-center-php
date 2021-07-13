@@ -4,6 +4,7 @@ $getKode = strtoupper($_GET['kode']);
 $namaPenyakit = $_GET['namaPenyakit'];
 $batasBawah = $_GET['batasBawah'];
 $batasAtas = $_GET['batasAtas'];
+$tipeAutis = $_GET['tipeAutis'];
 $penanganan = $_GET['penanganan'];
 
 if (isset($_POST['submit'])) {
@@ -11,6 +12,7 @@ if (isset($_POST['submit'])) {
   $namaPenyakit = $_POST['namaPenyakit'];
   $batasBawah        = $_POST['batasBawah'];
   $batasAtas        = $_POST['batasAtas'];
+  $tipeAutis        = $_POST['tipeAutis'];
   $penanganan = $_POST['penanganan'];
 
   $penyakit = array();
@@ -30,6 +32,7 @@ if (isset($_POST['submit'])) {
       'namaPenyakit' => $namaPenyakit,
       'batasBawah' =>  $batasBawah,
       'batasAtas' => $batasAtas,
+      'tipeAutis' => $tipeAutis,
       'penanganan' => $penanganan
     ];
 
@@ -96,9 +99,16 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-group">
+            <label for="tipeAutis" class="col-sm-2 control-label">Tipe Autis</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" name="tipeAutis" id="exampleFormControlTextarea1" rows="3"><?php echo $tipeAutis; ?></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="penanganan" class="col-sm-2 control-label">Penanganan</label>
             <div class="col-sm-8">
-              <input type="text" name="penanganan" class="form-control" id="penanganan" placeholder="Penanganan" value="<?= $penanganan; ?>">
+              <textarea class="form-control" name="penanganan" id="penanganan" rows="3"><?php echo $penanganan; ?></textarea>
             </div>
           </div>
 

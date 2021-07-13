@@ -4,6 +4,7 @@ if (isset($_POST['submit'])) {
   $uniqID = uniqid();
   $kode        = strtoupper($_POST['kode']);
   $namaPenyakit        = $_POST['namaPenyakit'];
+  $tipeAutis        = $_POST['tipeAutis'];
   $penanganan        = $_POST['penanganan'];
   $batasBawah        = $_POST['batasBawah'];
   $batasAtas        = $_POST['batasAtas'];
@@ -23,6 +24,7 @@ if (isset($_POST['submit'])) {
     $result = $database->getReference("penyakit/{$uniqID}")->set([
       'kode' => $kode,
       'namaPenyakit' => $namaPenyakit,
+      'tipeAutis' => $tipeAutis,
       'penanganan' => $penanganan,
       'batasBawah' => $batasBawah,
       'batasAtas' => $batasAtas
@@ -82,6 +84,13 @@ if (isset($_POST['submit'])) {
             <label for="batasAtas" class="col-sm-2 control-label">Batas Atas</label>
             <div class="col-sm-8">
               <input type="number" name="batasAtas" class="form-control" id="batasAtas" min="1" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tipeAutis" class="col-sm-2 control-label">Tipe Autis</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" name="tipeAutis" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
           </div>
 

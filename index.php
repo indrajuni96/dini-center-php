@@ -90,7 +90,7 @@
           </div>
           <!-- /.col -->
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
