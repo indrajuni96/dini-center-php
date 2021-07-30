@@ -233,8 +233,8 @@ if (isset($_GET['act'])) {
           <li class="<?= $status_data_pengetahuan; ?>"><a href="index.php?act=data-pengetahuan"><i class="fa fa-pencil-square-o"></i> <span>Data Pengetahuan</span></a></li>
           <li class="<?= $status_data_rule; ?>"><a href="index.php?act=data-rule"><i class="fa fa-pencil-square-o"></i> <span>Data Rule</span></a></li>
           <li class="<?= $status_data_hasil_diagnosa; ?>"><a href="index.php?act=data-hasil-diagnosa"><i class="fa fa-pencil-square-o"></i> <span>Data Hasil Diagnosa</span></a></li>
-          <li><a href="index.php?act=data-penilaian"><i class="fa fa-pencil-square-o"></i> <span>Data Penilaian</span></a></li>
-          <li class="<?= $status_data_info_autis; ?>"><a href="index.php?act=data-info-autis"><i class="fa fa-pencil-square-o"></i> <span>Data Informasi</span></a></li>
+          <!-- <li><a href="index.php?act=data-penilaian"><i class="fa fa-pencil-square-o"></i> <span>Data Penilaian</span></a></li>
+          <li class="<?= $status_data_info_autis; ?>"><a href="index.php?act=data-info-autis"><i class="fa fa-pencil-square-o"></i> <span>Data Informasi</span></a></li> -->
           <li class="<?= $status_keluar; ?>"><a href="../logout.php"><i class="fa fa-sign-out"></i> <span>Keluar</span></a></li>
         </ul>
       </section>
