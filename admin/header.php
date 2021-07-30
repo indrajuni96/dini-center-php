@@ -27,6 +27,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="../asset/template/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="../asset/template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
   <style>
     .swal2-popup {
       font-size: 1.6rem !important;

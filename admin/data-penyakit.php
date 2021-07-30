@@ -57,7 +57,8 @@ if (isset($_SESSION['message'])) {
                   <td><?= $value['batasAtas']; ?></td>
                   <!-- <td><?= $value['penanganan'] ?></td> -->
                   <td>
-                    <a href="index.php?act=edit-penyakit&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaPenyakit=<?= $value['namaPenyakit']; ?>&batasBawah=<?= $value['batasBawah']; ?>&batasAtas=<?= $value['batasAtas']; ?>&tipeAutis=<?= $value['tipeAutis']; ?>&penanganan=<?= $value['penanganan']; ?>" class="btn btn-success">Edit</a>
+                    <!-- <a href="index.php?act=edit-penyakit&id=<?= $key; ?>&kode=<?= $value['kode']; ?>&namaPenyakit=<?= $value['namaPenyakit']; ?>&batasBawah=<?= $value['batasBawah']; ?>&batasAtas=<?= $value['batasAtas']; ?>&tipeAutis=<?= $value['tipeAutis']; ?>&penanganan=<?= $value['penanganan']; ?>" class="btn btn-success">Edit</a> -->
+                    <a href="index.php?act=edit-penyakit&id=<?= $key; ?>&kode=<?= $value['kode']; ?>" class="btn btn-success">Edit</a>
                     <a href="index.php?act=delete-penyakit&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
                   </td>
                 </tr>

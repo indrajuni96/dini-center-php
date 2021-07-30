@@ -1,11 +1,23 @@
 <?php
 $id = $_GET['id'];
 $getKode = strtoupper($_GET['kode']);
-$namaPenyakit = $_GET['namaPenyakit'];
-$batasBawah = $_GET['batasBawah'];
-$batasAtas = $_GET['batasAtas'];
-$tipeAutis = $_GET['tipeAutis'];
-$penanganan = $_GET['penanganan'];
+
+$penyakit = array();
+$checkPenyakit = $database->getReference("penyakit")->getValue();
+
+if (!empty($checkPenyakit)) {
+  foreach ($checkPenyakit as $key => $value) {
+    $penyakit[$key] = $value['kode'];
+
+    if ($key == $id) {
+      $namaPenyakit = $value['namaPenyakit'];
+      $batasBawah = $value['batasBawah'];
+      $batasAtas = $value['batasAtas'];
+      $tipeAutis = $value['tipeAutis'];
+      $penanganan = $value['penanganan'];
+    }
+  }
+}
 
 if (isset($_POST['submit'])) {
   $kode = strtoupper($_POST['kode']);
@@ -14,15 +26,6 @@ if (isset($_POST['submit'])) {
   $batasAtas        = $_POST['batasAtas'];
   $tipeAutis        = $_POST['tipeAutis'];
   $penanganan = $_POST['penanganan'];
-
-  $penyakit = array();
-  $checkPenyakit = $database->getReference("penyakit")->getValue();
-
-  if (!empty($checkPenyakit)) {
-    foreach ($checkPenyakit as $key => $value) {
-      $penyakit[$key] = $value['kode'];
-    }
-  }
 
   if (array_search($kode, $penyakit) && $getKode != $kode) {
     echo "<script>Swal.fire('Kode sudah digunakan','','error'); </script>";
@@ -98,17 +101,18 @@ if (isset($_POST['submit'])) {
             </div>
           </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="tipeAutis" class="col-sm-2 control-label">Tipe Autis</label>
             <div class="col-sm-8">
               <textarea class="form-control" name="tipeAutis" id="exampleFormControlTextarea1" rows="3"><?php echo $tipeAutis; ?></textarea>
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group">
             <label for="penanganan" class="col-sm-2 control-label">Penanganan</label>
             <div class="col-sm-8">
-              <textarea class="form-control" name="penanganan" id="penanganan" rows="3"><?php echo $penanganan; ?></textarea>
+              <!-- <textarea id="penanganan" class="form-control" name="penanganan" rows="3"><?php echo $penanganan; ?></textarea> -->
+              <textarea class="form-control" name="penanganan" rows="8"><?php echo $penanganan; ?></textarea>
             </div>
           </div>
 
