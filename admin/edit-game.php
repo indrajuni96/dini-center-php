@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
   if (!empty($checkGame)) {
     foreach ($checkGame as $key => $value) {
-      $game[$key] = $value['kode'];
+      $game[$key] = $value['namaGame'];
     }
   }
 
