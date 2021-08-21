@@ -22,6 +22,7 @@
             <tr>
               <th style="width:6%">No</th>
               <th>Nama</th>
+              <th>Nama Konsultasi</th>
               <th>Hasil Fuzzy Tsukamoto</th>
               <th>Hasil Forward Chaining</th>
               <th style="width:15%">Action</th>
@@ -37,11 +38,21 @@
 
             if (!empty($dataUsers)) :
               foreach ($dataUsers as $key => $value) :
-                if ($value['email'] != 'admin@gmail.com') :
+                if ($value['level'] != 'admin') :
             ?>
                   <tr>
                     <td><?= $no; ?></td>
                     <td><?= $value['namaAnak']; ?></td>
+                    <?php
+                    foreach ($dataUsers as $keyUser => $valueUser) :
+                      if ($keyUser == $dataHasilDiagnosa[$key][0]['idUser']) :
+                    ?>
+                        <td><?= $valueUser['namaOrangTua']; ?></td>
+                    <?php
+                      endif;
+                    endforeach;
+                    ?>
+
                     <td><?= $dataHasilDiagnosa[$key][1]['nilaiTsukamoto']; ?></td>
                     <?php
                     foreach ($dataPenyakit as $keyPenyakit => $valuePenyakit) :
