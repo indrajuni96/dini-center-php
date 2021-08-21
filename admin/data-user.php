@@ -27,6 +27,7 @@ if (isset($_SESSION['message'])) {
         <h3 class="box-title">Data Table User</h3>
       </div>
       <div class="box-body table-responsive">
+        <a href="index.php?act=tambah-user" class="btn btn-lg btn-success fa fa-plus" style="margin-bottom:30px; margin-top:10px;"> Tambah</a>
 
         <table id="tableData" class="table table-bordered table-striped">
           <thead>
@@ -34,7 +35,7 @@ if (isset($_SESSION['message'])) {
               <th style="width:6%">No</th>
               <th>Nama</th>
               <th>Email</th>
-              <!-- <th>Alamat</th> -->
+              <th>Level</th>
               <th style="width:15%">Action</th>
             </tr>
           </thead>
@@ -51,7 +52,7 @@ if (isset($_SESSION['message'])) {
                     <td><?= $no; ?></td>
                     <td><?= $value['namaOrangTua']; ?></td>
                     <td><?= $value['email']; ?></td>
-                    <!-- <td><?= $value['alamat']; ?></td> -->
+                    <td><?= $value['level']; ?></td>
                     <td>
                       <a href="index.php?act=edit-user&id=<?= $key; ?>&namaOrangTua=<?= $value['namaOrangTua']; ?>&namaAnak=<?= $value['namaAnak']; ?>&email=<?= $value['email']; ?>&alamat=<?= $value['alamat']; ?>&noTelepon=<?= $value['noTelepon']; ?>" class="btn btn-success">Edit</a>
                       <a href="index.php?act=delete-user&id=<?= $key; ?>" class="btn btn-danger tombol-hapus"> Delete</a>
